@@ -1,0 +1,11 @@
+C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\bin\Debug\Folder Sorter.exe
+C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\bin\Debug\Folder Sorter.pdb
+C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\obj\x86\Debug\Folder_Sorter.Form1.resources
+C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\obj\x86\Debug\Folder_Sorter.Properties.Resources.resources
+C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\obj\x86\Debug\Folder Sorter.exe
+C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\obj\x86\Debug\Folder Sorter.pdb
+C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\bin\Debug\Database1.sdf
+C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\bin\Debug\Folder Sorter.exe.config
