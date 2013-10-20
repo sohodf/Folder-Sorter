@@ -772,13 +772,13 @@ namespace Folder_Sorter {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SortDataRow AddSortDataRow(string WorkingDir, string FileFilter, string TargetDir, long FilterNo, long TTL) {
+            public SortDataRow AddSortDataRow(string WorkingDir, string FileFilter, string TargetDir, long TTL) {
                 SortDataRow rowSortDataRow = ((SortDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         WorkingDir,
                         FileFilter,
                         TargetDir,
-                        FilterNo,
+                        null,
                         TTL};
                 rowSortDataRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSortDataRow);
@@ -834,6 +834,7 @@ namespace Folder_Sorter {
                 this.columnWorkingDir.MaxLength = 64;
                 this.columnFileFilter.MaxLength = 64;
                 this.columnTargetDir.MaxLength = 64;
+                this.columnFilterNo.AutoIncrement = true;
                 this.columnFilterNo.AllowDBNull = false;
                 this.columnFilterNo.Unique = true;
             }

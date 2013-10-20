@@ -148,7 +148,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="FilterNo" msprop:Generator_ColumnVarNameInTable="columnFilterNo" msprop:Generator_ColumnPropNameInRow="FilterNo" msprop:Generator_ColumnPropNameInTable="FilterNoColumn" msprop:Generator_UserColumnName="FilterNo" type="xs:long" />
+              <xs:element name="FilterNo" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnFilterNo" msprop:Generator_ColumnPropNameInRow="FilterNo" msprop:Generator_ColumnPropNameInTable="FilterNoColumn" msprop:Generator_UserColumnName="FilterNo" type="xs:long" />
               <xs:element name="TTL" msprop:Generator_ColumnVarNameInTable="columnTTL" msprop:Generator_ColumnPropNameInRow="TTL" msprop:Generator_ColumnPropNameInTable="TTLColumn" msprop:Generator_UserColumnName="TTL" type="xs:long" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
