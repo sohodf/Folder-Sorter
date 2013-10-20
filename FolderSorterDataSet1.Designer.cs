@@ -20,19 +20,21 @@ namespace Folder_Sorter {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("FolderSorterDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("FolderSorterDataSet1")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class FolderSorterDataSet : global::System.Data.DataSet {
+    public partial class FolderSorterDataSet1 : global::System.Data.DataSet {
+        
+        private FileInfoDataTable tableFileInfo;
         
         private SortDataDataTable tableSortData;
         
-        private FileDataDataTable tableFileData;
+        private global::System.Data.DataRelation relationFK_SortData_FileInfo;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public FolderSorterDataSet() {
+        public FolderSorterDataSet1() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -43,7 +45,7 @@ namespace Folder_Sorter {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected FolderSorterDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected FolderSorterDataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -56,11 +58,11 @@ namespace Folder_Sorter {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                if ((ds.Tables["FileInfo"] != null)) {
+                    base.Tables.Add(new FileInfoDataTable(ds.Tables["FileInfo"]));
+                }
                 if ((ds.Tables["SortData"] != null)) {
                     base.Tables.Add(new SortDataDataTable(ds.Tables["SortData"]));
-                }
-                if ((ds.Tables["FileData"] != null)) {
-                    base.Tables.Add(new FileDataDataTable(ds.Tables["FileData"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -84,9 +86,9 @@ namespace Folder_Sorter {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SortDataDataTable SortData {
+        public FileInfoDataTable FileInfo {
             get {
-                return this.tableSortData;
+                return this.tableFileInfo;
             }
         }
         
@@ -94,9 +96,9 @@ namespace Folder_Sorter {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public FileDataDataTable FileData {
+        public SortDataDataTable SortData {
             get {
-                return this.tableFileData;
+                return this.tableSortData;
             }
         }
         
@@ -142,7 +144,7 @@ namespace Folder_Sorter {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            FolderSorterDataSet cln = ((FolderSorterDataSet)(base.Clone()));
+            FolderSorterDataSet1 cln = ((FolderSorterDataSet1)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -167,11 +169,11 @@ namespace Folder_Sorter {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
+                if ((ds.Tables["FileInfo"] != null)) {
+                    base.Tables.Add(new FileInfoDataTable(ds.Tables["FileInfo"]));
+                }
                 if ((ds.Tables["SortData"] != null)) {
                     base.Tables.Add(new SortDataDataTable(ds.Tables["SortData"]));
-                }
-                if ((ds.Tables["FileData"] != null)) {
-                    base.Tables.Add(new FileDataDataTable(ds.Tables["FileData"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -206,43 +208,56 @@ namespace Folder_Sorter {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
+            this.tableFileInfo = ((FileInfoDataTable)(base.Tables["FileInfo"]));
+            if ((initTable == true)) {
+                if ((this.tableFileInfo != null)) {
+                    this.tableFileInfo.InitVars();
+                }
+            }
             this.tableSortData = ((SortDataDataTable)(base.Tables["SortData"]));
             if ((initTable == true)) {
                 if ((this.tableSortData != null)) {
                     this.tableSortData.InitVars();
                 }
             }
-            this.tableFileData = ((FileDataDataTable)(base.Tables["FileData"]));
-            if ((initTable == true)) {
-                if ((this.tableFileData != null)) {
-                    this.tableFileData.InitVars();
-                }
-            }
+            this.relationFK_SortData_FileInfo = this.Relations["FK_SortData_FileInfo"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "FolderSorterDataSet";
+            this.DataSetName = "FolderSorterDataSet1";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/FolderSorterDataSet.xsd";
+            this.Namespace = "http://tempuri.org/FolderSorterDataSet1.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
+            this.tableFileInfo = new FileInfoDataTable();
+            base.Tables.Add(this.tableFileInfo);
             this.tableSortData = new SortDataDataTable();
             base.Tables.Add(this.tableSortData);
-            this.tableFileData = new FileDataDataTable();
-            base.Tables.Add(this.tableFileData);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_SortData_FileInfo", new global::System.Data.DataColumn[] {
+                        this.tableSortData.FilterNoColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFileInfo.SortFilterNoColumn});
+            this.tableFileInfo.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            this.relationFK_SortData_FileInfo = new global::System.Data.DataRelation("FK_SortData_FileInfo", new global::System.Data.DataColumn[] {
+                        this.tableSortData.FilterNoColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFileInfo.SortFilterNoColumn}, false);
+            this.Relations.Add(this.relationFK_SortData_FileInfo);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeSortData() {
+        private bool ShouldSerializeFileInfo() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeFileData() {
+        private bool ShouldSerializeSortData() {
             return false;
         }
         
@@ -257,7 +272,7 @@ namespace Folder_Sorter {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            FolderSorterDataSet ds = new FolderSorterDataSet();
+            FolderSorterDataSet1 ds = new FolderSorterDataSet1();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -302,10 +317,333 @@ namespace Folder_Sorter {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void SortDataRowChangeEventHandler(object sender, SortDataRowChangeEvent e);
+        public delegate void FileInfoRowChangeEventHandler(object sender, FileInfoRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void FileDataRowChangeEventHandler(object sender, FileDataRowChangeEvent e);
+        public delegate void SortDataRowChangeEventHandler(object sender, SortDataRowChangeEvent e);
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class FileInfoDataTable : global::System.Data.TypedTableBase<FileInfoRow> {
+            
+            private global::System.Data.DataColumn columnFileName;
+            
+            private global::System.Data.DataColumn columnAddDate;
+            
+            private global::System.Data.DataColumn _columnMoved_;
+            
+            private global::System.Data.DataColumn columnMoveDate;
+            
+            private global::System.Data.DataColumn columnSortFilterNo;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FileInfoDataTable() {
+                this.TableName = "FileInfo";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal FileInfoDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected FileInfoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FileNameColumn {
+                get {
+                    return this.columnFileName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AddDateColumn {
+                get {
+                    return this.columnAddDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn _Moved_Column {
+                get {
+                    return this._columnMoved_;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MoveDateColumn {
+                get {
+                    return this.columnMoveDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SortFilterNoColumn {
+                get {
+                    return this.columnSortFilterNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FileInfoRow this[int index] {
+                get {
+                    return ((FileInfoRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event FileInfoRowChangeEventHandler FileInfoRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event FileInfoRowChangeEventHandler FileInfoRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event FileInfoRowChangeEventHandler FileInfoRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event FileInfoRowChangeEventHandler FileInfoRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddFileInfoRow(FileInfoRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FileInfoRow AddFileInfoRow(string FileName, System.DateTime AddDate, byte _Moved_, System.DateTime MoveDate, SortDataRow parentSortDataRowByFK_SortData_FileInfo) {
+                FileInfoRow rowFileInfoRow = ((FileInfoRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        FileName,
+                        AddDate,
+                        _Moved_,
+                        MoveDate,
+                        null};
+                if ((parentSortDataRowByFK_SortData_FileInfo != null)) {
+                    columnValuesArray[4] = parentSortDataRowByFK_SortData_FileInfo[3];
+                }
+                rowFileInfoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowFileInfoRow);
+                return rowFileInfoRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FileInfoRow FindByFileNameAddDate(string FileName, System.DateTime AddDate) {
+                return ((FileInfoRow)(this.Rows.Find(new object[] {
+                            FileName,
+                            AddDate})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                FileInfoDataTable cln = ((FileInfoDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new FileInfoDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnFileName = base.Columns["FileName"];
+                this.columnAddDate = base.Columns["AddDate"];
+                this._columnMoved_ = base.Columns["Moved?"];
+                this.columnMoveDate = base.Columns["MoveDate"];
+                this.columnSortFilterNo = base.Columns["SortFilterNo"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnFileName = new global::System.Data.DataColumn("FileName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFileName);
+                this.columnAddDate = new global::System.Data.DataColumn("AddDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAddDate);
+                this._columnMoved_ = new global::System.Data.DataColumn("Moved?", typeof(byte), null, global::System.Data.MappingType.Element);
+                this._columnMoved_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnMoved_");
+                this._columnMoved_.ExtendedProperties.Add("Generator_UserColumnName", "Moved?");
+                base.Columns.Add(this._columnMoved_);
+                this.columnMoveDate = new global::System.Data.DataColumn("MoveDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMoveDate);
+                this.columnSortFilterNo = new global::System.Data.DataColumn("SortFilterNo", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSortFilterNo);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnFileName,
+                                this.columnAddDate}, true));
+                this.columnFileName.AllowDBNull = false;
+                this.columnFileName.MaxLength = 50;
+                this.columnAddDate.AllowDBNull = false;
+                this._columnMoved_.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FileInfoRow NewFileInfoRow() {
+                return ((FileInfoRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new FileInfoRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(FileInfoRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.FileInfoRowChanged != null)) {
+                    this.FileInfoRowChanged(this, new FileInfoRowChangeEvent(((FileInfoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.FileInfoRowChanging != null)) {
+                    this.FileInfoRowChanging(this, new FileInfoRowChangeEvent(((FileInfoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.FileInfoRowDeleted != null)) {
+                    this.FileInfoRowDeleted(this, new FileInfoRowChangeEvent(((FileInfoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.FileInfoRowDeleting != null)) {
+                    this.FileInfoRowDeleting(this, new FileInfoRowChangeEvent(((FileInfoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveFileInfoRow(FileInfoRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                FolderSorterDataSet1 ds = new FolderSorterDataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "FileInfoDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -322,7 +660,7 @@ namespace Folder_Sorter {
             
             private global::System.Data.DataColumn columnFilterNo;
             
-            private global::System.Data.DataColumn columnTimeToMove;
+            private global::System.Data.DataColumn columnTTL;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -391,9 +729,9 @@ namespace Folder_Sorter {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TimeToMoveColumn {
+            public global::System.Data.DataColumn TTLColumn {
                 get {
-                    return this.columnTimeToMove;
+                    return this.columnTTL;
                 }
             }
             
@@ -434,14 +772,14 @@ namespace Folder_Sorter {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SortDataRow AddSortDataRow(string WorkingDir, string FileFilter, string TargetDir, long FilterNo, long TimeToMove) {
+            public SortDataRow AddSortDataRow(string WorkingDir, string FileFilter, string TargetDir, long FilterNo, long TTL) {
                 SortDataRow rowSortDataRow = ((SortDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         WorkingDir,
                         FileFilter,
                         TargetDir,
                         FilterNo,
-                        TimeToMove};
+                        TTL};
                 rowSortDataRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSortDataRow);
                 return rowSortDataRow;
@@ -475,7 +813,7 @@ namespace Folder_Sorter {
                 this.columnFileFilter = base.Columns["FileFilter"];
                 this.columnTargetDir = base.Columns["TargetDir"];
                 this.columnFilterNo = base.Columns["FilterNo"];
-                this.columnTimeToMove = base.Columns["TimeToMove"];
+                this.columnTTL = base.Columns["TTL"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -489,8 +827,8 @@ namespace Folder_Sorter {
                 base.Columns.Add(this.columnTargetDir);
                 this.columnFilterNo = new global::System.Data.DataColumn("FilterNo", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFilterNo);
-                this.columnTimeToMove = new global::System.Data.DataColumn("TimeToMove", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTimeToMove);
+                this.columnTTL = new global::System.Data.DataColumn("TTL", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTTL);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnFilterNo}, true));
                 this.columnWorkingDir.MaxLength = 64;
@@ -498,7 +836,6 @@ namespace Folder_Sorter {
                 this.columnTargetDir.MaxLength = 64;
                 this.columnFilterNo.AllowDBNull = false;
                 this.columnFilterNo.Unique = true;
-                this.columnTimeToMove.DefaultValue = ((long)(0));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -566,7 +903,7 @@ namespace Folder_Sorter {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                FolderSorterDataSet ds = new FolderSorterDataSet();
+                FolderSorterDataSet1 ds = new FolderSorterDataSet1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -626,275 +963,117 @@ namespace Folder_Sorter {
         }
         
         /// <summary>
-        ///Represents the strongly named DataTable class.
+        ///Represents strongly named DataRow class.
         ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class FileDataDataTable : global::System.Data.TypedTableBase<FileDataRow> {
+        public partial class FileInfoRow : global::System.Data.DataRow {
             
-            private global::System.Data.DataColumn columnFileName;
-            
-            private global::System.Data.DataColumn columnDateAdded;
+            private FileInfoDataTable tableFileInfo;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FileDataDataTable() {
-                this.TableName = "FileData";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
+            internal FileInfoRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableFileInfo = ((FileInfoDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal FileDataDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected FileDataDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FileNameColumn {
+            public string FileName {
                 get {
-                    return this.columnFileName;
+                    return ((string)(this[this.tableFileInfo.FileNameColumn]));
+                }
+                set {
+                    this[this.tableFileInfo.FileNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DateAddedColumn {
+            public System.DateTime AddDate {
                 get {
-                    return this.columnDateAdded;
+                    return ((global::System.DateTime)(this[this.tableFileInfo.AddDateColumn]));
+                }
+                set {
+                    this[this.tableFileInfo.AddDateColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
+            public byte _Moved_ {
                 get {
-                    return this.Rows.Count;
+                    return ((byte)(this[this.tableFileInfo._Moved_Column]));
+                }
+                set {
+                    this[this.tableFileInfo._Moved_Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FileDataRow this[int index] {
+            public System.DateTime MoveDate {
                 get {
-                    return ((FileDataRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event FileDataRowChangeEventHandler FileDataRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event FileDataRowChangeEventHandler FileDataRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event FileDataRowChangeEventHandler FileDataRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event FileDataRowChangeEventHandler FileDataRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddFileDataRow(FileDataRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FileDataRow AddFileDataRow(string FileName, System.DateTime DateAdded) {
-                FileDataRow rowFileDataRow = ((FileDataRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        FileName,
-                        DateAdded};
-                rowFileDataRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowFileDataRow);
-                return rowFileDataRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FileDataRow FindByFileName(string FileName) {
-                return ((FileDataRow)(this.Rows.Find(new object[] {
-                            FileName})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                FileDataDataTable cln = ((FileDataDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new FileDataDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnFileName = base.Columns["FileName"];
-                this.columnDateAdded = base.Columns["DateAdded"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnFileName = new global::System.Data.DataColumn("FileName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFileName);
-                this.columnDateAdded = new global::System.Data.DataColumn("DateAdded", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDateAdded);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnFileName}, true));
-                this.columnFileName.AllowDBNull = false;
-                this.columnFileName.Unique = true;
-                this.columnDateAdded.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FileDataRow NewFileDataRow() {
-                return ((FileDataRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new FileDataRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(FileDataRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.FileDataRowChanged != null)) {
-                    this.FileDataRowChanged(this, new FileDataRowChangeEvent(((FileDataRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.FileDataRowChanging != null)) {
-                    this.FileDataRowChanging(this, new FileDataRowChangeEvent(((FileDataRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.FileDataRowDeleted != null)) {
-                    this.FileDataRowDeleted(this, new FileDataRowChangeEvent(((FileDataRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.FileDataRowDeleting != null)) {
-                    this.FileDataRowDeleting(this, new FileDataRowChangeEvent(((FileDataRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveFileDataRow(FileDataRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                FolderSorterDataSet ds = new FolderSorterDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "FileDataDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
                     try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
+                        return ((global::System.DateTime)(this[this.tableFileInfo.MoveDateColumn]));
                     }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MoveDate\' in table \'FileInfo\' is DBNull.", e);
                     }
                 }
-                xs.Add(dsSchema);
-                return type;
+                set {
+                    this[this.tableFileInfo.MoveDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long SortFilterNo {
+                get {
+                    try {
+                        return ((long)(this[this.tableFileInfo.SortFilterNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SortFilterNo\' in table \'FileInfo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableFileInfo.SortFilterNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SortDataRow SortDataRow {
+                get {
+                    return ((SortDataRow)(this.GetParentRow(this.Table.ParentRelations["FK_SortData_FileInfo"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_SortData_FileInfo"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMoveDateNull() {
+                return this.IsNull(this.tableFileInfo.MoveDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMoveDateNull() {
+                this[this.tableFileInfo.MoveDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSortFilterNoNull() {
+                return this.IsNull(this.tableFileInfo.SortFilterNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSortFilterNoNull() {
+                this[this.tableFileInfo.SortFilterNoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -973,17 +1152,17 @@ namespace Folder_Sorter {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public long TimeToMove {
+            public long TTL {
                 get {
                     try {
-                        return ((long)(this[this.tableSortData.TimeToMoveColumn]));
+                        return ((long)(this[this.tableSortData.TTLColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TimeToMove\' in table \'SortData\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TTL\' in table \'SortData\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSortData.TimeToMoveColumn] = value;
+                    this[this.tableSortData.TTLColumn] = value;
                 }
             }
             
@@ -1025,50 +1204,58 @@ namespace Folder_Sorter {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTimeToMoveNull() {
-                return this.IsNull(this.tableSortData.TimeToMoveColumn);
+            public bool IsTTLNull() {
+                return this.IsNull(this.tableSortData.TTLColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTimeToMoveNull() {
-                this[this.tableSortData.TimeToMoveColumn] = global::System.Convert.DBNull;
+            public void SetTTLNull() {
+                this[this.tableSortData.TTLColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FileInfoRow[] GetFileInfoRows() {
+                if ((this.Table.ChildRelations["FK_SortData_FileInfo"] == null)) {
+                    return new FileInfoRow[0];
+                }
+                else {
+                    return ((FileInfoRow[])(base.GetChildRows(this.Table.ChildRelations["FK_SortData_FileInfo"])));
+                }
             }
         }
         
         /// <summary>
-        ///Represents strongly named DataRow class.
+        ///Row event argument class
         ///</summary>
-        public partial class FileDataRow : global::System.Data.DataRow {
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class FileInfoRowChangeEvent : global::System.EventArgs {
             
-            private FileDataDataTable tableFileData;
+            private FileInfoRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal FileDataRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableFileData = ((FileDataDataTable)(this.Table));
+            public FileInfoRowChangeEvent(FileInfoRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FileName {
+            public FileInfoRow Row {
                 get {
-                    return ((string)(this[this.tableFileData.FileNameColumn]));
-                }
-                set {
-                    this[this.tableFileData.FileNameColumn] = value;
+                    return this.eventRow;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime DateAdded {
+            public global::System.Data.DataRowAction Action {
                 get {
-                    return ((global::System.DateTime)(this[this.tableFileData.DateAddedColumn]));
-                }
-                set {
-                    this[this.tableFileData.DateAddedColumn] = value;
+                    return this.eventAction;
                 }
             }
         }
@@ -1106,44 +1293,272 @@ namespace Folder_Sorter {
                 }
             }
         }
+    }
+}
+namespace Folder_Sorter.FolderSorterDataSet1TableAdapters {
+    
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class FileInfoTableAdapter : global::System.ComponentModel.Component {
         
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
+        private global::System.Data.SQLite.SQLiteDataAdapter _adapter;
+        
+        private global::System.Data.SQLite.SQLiteConnection _connection;
+        
+        private global::System.Data.SQLite.SQLiteTransaction _transaction;
+        
+        private global::System.Data.SQLite.SQLiteCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class FileDataRowChangeEvent : global::System.EventArgs {
-            
-            private FileDataRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FileDataRowChangeEvent(FileDataRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
+        public FileInfoTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SQLite.SQLiteDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FileDataRow Row {
-                get {
-                    return this.eventRow;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SQLite.SQLiteCommand)(this.CommandCollection[i])).Connection = value;
+                    }
                 }
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SQLite.SQLiteTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SQLite.SQLiteCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SQLite.SQLiteDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "FileInfo";
+            tableMapping.ColumnMappings.Add("FileName", "FileName");
+            tableMapping.ColumnMappings.Add("AddDate", "AddDate");
+            tableMapping.ColumnMappings.Add("Moved?", "Moved?");
+            tableMapping.ColumnMappings.Add("MoveDate", "MoveDate");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.InsertCommand = new global::System.Data.SQLite.SQLiteCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [FileInfo] ([FileName], [AddDate], [Moved?], [MoveDate]) VALUES (@Fil" +
+                "eName, @AddDate, @param1, @MoveDate)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            global::System.Data.SQLite.SQLiteParameter param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@FileName";
+            param.DbType = global::System.Data.DbType.String;
+            param.SourceColumn = "FileName";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@AddDate";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.SourceColumn = "AddDate";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@param1";
+            param.DbType = global::System.Data.DbType.Byte;
+            param.DbType = global::System.Data.DbType.Byte;
+            param.SourceColumn = "Moved?";
+            this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::System.Data.SQLite.SQLiteParameter();
+            param.ParameterName = "@MoveDate";
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.DbType = global::System.Data.DbType.DateTime;
+            param.SourceColumn = "MoveDate";
+            this._adapter.InsertCommand.Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SQLite.SQLiteConnection();
+            this._connection.ConnectionString = global::Folder_Sorter.Properties.Settings.Default.FolderSorterConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
+            this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT [FileName], [AddDate], [Moved?], [MoveDate] FROM [FileInfo]";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(FolderSorterDataSet1.FileInfoDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual FolderSorterDataSet1.FileInfoDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            FolderSorterDataSet1.FileInfoDataTable dataTable = new FolderSorterDataSet1.FileInfoDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(FolderSorterDataSet1.FileInfoDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(FolderSorterDataSet1 dataSet) {
+            return this.Adapter.Update(dataSet, "FileInfo");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string FileName, System.DateTime AddDate, byte param1, global::System.Nullable<global::System.DateTime> MoveDate) {
+            if ((FileName == null)) {
+                throw new global::System.ArgumentNullException("FileName");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(FileName));
+            }
+            this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(AddDate));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((byte)(param1));
+            if ((MoveDate.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(MoveDate.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
                 }
             }
         }
     }
-}
-namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
-    
     
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
@@ -1439,7 +1854,7 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SQLite.SQLiteCommand[1];
             this._commandCollection[0] = new global::System.Data.SQLite.SQLiteCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT WorkingDir, FileFilter, TargetDir, FilterNo FROM SortData";
+            this._commandCollection[0].CommandText = "SELECT [WorkingDir], [FileFilter], [TargetDir], [FilterNo] FROM [SortData]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1447,7 +1862,7 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(FolderSorterDataSet.SortDataDataTable dataTable) {
+        public virtual int Fill(FolderSorterDataSet1.SortDataDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1460,9 +1875,9 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual FolderSorterDataSet.SortDataDataTable GetData() {
+        public virtual FolderSorterDataSet1.SortDataDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            FolderSorterDataSet.SortDataDataTable dataTable = new FolderSorterDataSet.SortDataDataTable();
+            FolderSorterDataSet1.SortDataDataTable dataTable = new FolderSorterDataSet1.SortDataDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1470,14 +1885,14 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FolderSorterDataSet.SortDataDataTable dataTable) {
+        public virtual int Update(FolderSorterDataSet1.SortDataDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(FolderSorterDataSet dataSet) {
+        public virtual int Update(FolderSorterDataSet1 dataSet) {
             return this.Adapter.Update(dataSet, "SortData");
         }
         
@@ -1668,6 +2083,8 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
+        private FileInfoTableAdapter _fileInfoTableAdapter;
+        
         private SortDataTableAdapter _sortDataTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
@@ -1682,6 +2099,20 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
             }
             set {
                 this._updateOrder = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public FileInfoTableAdapter FileInfoTableAdapter {
+            get {
+                return this._fileInfoTableAdapter;
+            }
+            set {
+                this._fileInfoTableAdapter = value;
             }
         }
         
@@ -1718,6 +2149,10 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
+                if (((this._fileInfoTableAdapter != null) 
+                            && (this._fileInfoTableAdapter.Connection != null))) {
+                    return this._fileInfoTableAdapter.Connection;
+                }
                 if (((this._sortDataTableAdapter != null) 
                             && (this._sortDataTableAdapter.Connection != null))) {
                     return this._sortDataTableAdapter.Connection;
@@ -1735,6 +2170,9 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
+                if ((this._fileInfoTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 if ((this._sortDataTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -1747,7 +2185,7 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(FolderSorterDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(FolderSorterDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._sortDataTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.SortData.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -1755,6 +2193,15 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._sortDataTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._fileInfoTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.FileInfo.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._fileInfoTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -1766,13 +2213,21 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(FolderSorterDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(FolderSorterDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._sortDataTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.SortData.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._sortDataTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._fileInfoTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.FileInfo.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._fileInfoTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -1784,8 +2239,16 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(FolderSorterDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(FolderSorterDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._fileInfoTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.FileInfo.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._fileInfoTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._sortDataTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.SortData.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -1826,12 +2289,17 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(FolderSorterDataSet dataSet) {
+        public virtual int UpdateAll(FolderSorterDataSet1 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
+            }
+            if (((this._fileInfoTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._fileInfoTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
             }
             if (((this._sortDataTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._sortDataTableAdapter.Connection) == false))) {
@@ -1870,6 +2338,15 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
+                if ((this._fileInfoTableAdapter != null)) {
+                    revertConnections.Add(this._fileInfoTableAdapter, this._fileInfoTableAdapter.Connection);
+                    this._fileInfoTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(workConnection));
+                    this._fileInfoTableAdapter.Transaction = ((global::System.Data.SQLite.SQLiteTransaction)(workTransaction));
+                    if (this._fileInfoTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._fileInfoTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._fileInfoTableAdapter.Adapter);
+                    }
+                }
                 if ((this._sortDataTableAdapter != null)) {
                     revertConnections.Add(this._sortDataTableAdapter, this._sortDataTableAdapter.Connection);
                     this._sortDataTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(workConnection));
@@ -1936,6 +2413,10 @@ namespace Folder_Sorter.FolderSorterDataSetTableAdapters {
             finally {
                 if (workConnOpened) {
                     workConnection.Close();
+                }
+                if ((this._fileInfoTableAdapter != null)) {
+                    this._fileInfoTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._fileInfoTableAdapter]));
+                    this._fileInfoTableAdapter.Transaction = null;
                 }
                 if ((this._sortDataTableAdapter != null)) {
                     this._sortDataTableAdapter.Connection = ((global::System.Data.SQLite.SQLiteConnection)(revertConnections[this._sortDataTableAdapter]));

@@ -12,8 +12,8 @@ namespace Folder_Sorter
 
     public partial class Form1 : Form
     {
-        //Global - current working folder
-        string workingDir = "";
+        string watchingDir = "";
+        string targetDir = "";
 
         public Form1()
         {
@@ -37,9 +37,31 @@ namespace Folder_Sorter
             if (result == DialogResult.OK)
             {
                 label2.Text = fbd.SelectedPath;
-                workingDir = (char)34 + fbd.SelectedPath + (char)34;
+                watchingDir = (char)34 + fbd.SelectedPath + (char)34;
 
             }
        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            label5.Text = textBox1.Text;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            DialogResult result = fbd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                label7.Text = fbd.SelectedPath;
+                targetDir = (char)34 + fbd.SelectedPath + (char)34;
+
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label10.Text = comboBox1.Text;
+        }
     }
 }
