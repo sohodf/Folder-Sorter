@@ -19,7 +19,11 @@ namespace Folder_Sorter
         public string watchingDir { get; set; }
         public string targetDir { get; set; }
         public ArrayList filters = new ArrayList();
+        public ArrayList files = new ArrayList();
+        //path for filters file
         public static string filterPath = Application.StartupPath + "\\FilterList.csv";
+        //path for files file
+        public static string filesPath = Application.StartupPath + "\\Files.csv";
 
         public MainWindow()
         {
@@ -128,6 +132,11 @@ namespace Folder_Sorter
         {
             listBox1.Items.Add(textToLog);
             listBox1.SelectedIndex = listBox1.Items.Count - 1;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //clears selected filter
         }
 
     }

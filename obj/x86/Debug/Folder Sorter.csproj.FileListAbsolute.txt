@@ -7,5 +7,4 @@ C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\o
 C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\obj\x86\Debug\Folder Sorter.exe
 C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\obj\x86\Debug\Folder Sorter.pdb
 C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\bin\Debug\Folder Sorter.exe.config
-C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\bin\Debug\FolderSorterDB.sdf
 C:\Users\itl\Documents\Visual Studio 2010\Projects\Folder Sorter\Folder Sorter\obj\x86\Debug\Folder_Sorter.MainWindow.resources
