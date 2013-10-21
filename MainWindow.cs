@@ -26,6 +26,7 @@ namespace Folder_Sorter
         public static string filesPath = Application.StartupPath + "\\Files.csv";
         //path for log file
         public string LogFileName = "";
+        System.Windows.Forms.Timer folderWatchTimer = new System.Windows.Forms.Timer();
 
         public MainWindow()
         {
@@ -42,7 +43,7 @@ namespace Folder_Sorter
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            LogFileName = @"Log " + DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss") + ".txt";
+            LogFileName = @"Log " + DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss") + ".txt";
             //create log file
             File.Create(Application.StartupPath + LogFileName);
             
@@ -185,7 +186,30 @@ namespace Folder_Sorter
 
         private void button6_Click(object sender, EventArgs e)
         {
+            button6.Enabled = false;
+            button7.Enabled = true;
+
+            folderWatchTimer.Interval = 10000;
+            folderWatchTimer.Tick += new EventHandler(timerTick);
+            folderWatchTimer.Enabled = true;
+
+            Log(DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + " started watching folders - " + filters.Count.ToString() + " filters active");
+
+        }
+
+        void timerTick(object sender, EventArgs e)
+        {
+            Log("tick");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
             
+            folderWatchTimer.Stop();
+            button7.Enabled = false;
+            button6.Enabled = true;
+
+            Log(DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + " stopped watching folders ");
         }
 
     }
