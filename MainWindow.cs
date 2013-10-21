@@ -46,6 +46,13 @@ namespace Folder_Sorter
             else
                 File.Create(filterPath);
 
+            if (File.Exists(filesPath))
+            {
+                LoadFiles();
+            }
+            else
+                File.Create(filesPath);
+
 
         }
 
@@ -74,6 +81,34 @@ namespace Folder_Sorter
             }
 
         }
+
+        //read file and load active files
+        public ArrayList LoadFiles()
+        {
+            files.Clear();
+
+            if (File.ReadAllText(filesPath) == "")
+            {
+                //empty file - do nothing
+                return files;
+            }
+            else
+            {
+                //load the filters to an object
+                string[] allLines = File.ReadAllLines(filesPath);
+                foreach (string line in allLines)
+                {
+                    string[] items = line.Split(',');
+                    cls_FileToSort file = new cls_FileToSort(DateTime.Parse(items[0]), items[1], items[2], int.Parse(items[3]));
+                    files.Add(files);
+                }
+                Log(files.Count.ToString() + " files loaded in total");
+                return files;
+            }
+
+        }
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {

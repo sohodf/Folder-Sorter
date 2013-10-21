@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cls_Filter.cs" />
-    <Compile Include="FileToSort.cs" />
+    <Compile Include="cls_FileToSort.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
