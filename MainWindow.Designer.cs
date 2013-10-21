@@ -49,6 +49,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.StartWatch = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -274,12 +277,38 @@
             this.listBox1.Size = new System.Drawing.Size(668, 121);
             this.listBox1.TabIndex = 0;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(414, 529);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(74, 38);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "Start Watch";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(519, 529);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(74, 38);
+            this.button7.TabIndex = 6;
+            this.button7.Text = "Stop Watch";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // StartWatch
+            // 
+            this.StartWatch.WorkerReportsProgress = true;
+            this.StartWatch.WorkerSupportsCancellation = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(717, 579);
             this.ControlBox = false;
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -319,6 +348,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.ComponentModel.BackgroundWorker StartWatch;
     }
 }
 

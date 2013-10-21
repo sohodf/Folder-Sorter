@@ -24,6 +24,8 @@ namespace Folder_Sorter
         public static string filterPath = Application.StartupPath + "\\FilterList.csv";
         //path for files file
         public static string filesPath = Application.StartupPath + "\\Files.csv";
+        //path for log file
+        public string LogFileName = "";
 
         public MainWindow()
         {
@@ -35,10 +37,15 @@ namespace Folder_Sorter
             this.Close();
         }
 
-        //on form load, try to read all filters. if none exist, create empty filter file.
+        //load both filter and files files upon program start.
+        //initialize log file
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            LogFileName = @"Log " + DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss") + ".txt";
+            //create log file
+            File.Create(Application.StartupPath + LogFileName);
+            
             if (File.Exists(filterPath))
             {
                 LoadFilters();
@@ -52,7 +59,6 @@ namespace Folder_Sorter
             }
             else
                 File.Create(filesPath);
-
 
         }
 
@@ -165,13 +171,21 @@ namespace Folder_Sorter
         //adds a line to the log
         public void Log(string textToLog)
         {
+            //add the log to the listbox
             listBox1.Items.Add(textToLog);
             listBox1.SelectedIndex = listBox1.Items.Count - 1;
+            //write log to file
+            File.AppendAllText(Application.StartupPath + "\\" + LogFileName, textToLog + Environment.NewLine);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             //clears selected filter
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
         }
 
     }
