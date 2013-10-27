@@ -27,6 +27,7 @@ namespace Folder_Sorter
         //path for log file
         public string LogFileName = "";
         System.Windows.Forms.Timer folderWatchTimer = new System.Windows.Forms.Timer();
+        public static int watchInterval = 5000;
 
         public MainWindow()
         {
@@ -188,8 +189,9 @@ namespace Folder_Sorter
         {
             button6.Enabled = false;
             button7.Enabled = true;
+            button1.Enabled = false;
 
-            folderWatchTimer.Interval = 10000;
+            folderWatchTimer.Interval = watchInterval;
             folderWatchTimer.Tick += new EventHandler(timerTick);
             folderWatchTimer.Enabled = true;
 
@@ -197,19 +199,39 @@ namespace Folder_Sorter
 
         }
 
+        //timer ticks on "watchInterval" interval (in ms). if something's happenning - do nothing. else, start the tick.
         void timerTick(object sender, EventArgs e)
         {
             Log("tick");
+            if (RunOverFolder.IsBusy)
+                return;
+            else
+                RunOverFolder.RunWorkerAsync();
         }
 
+        //stops the time. if there's an action in the background, it continues until it is finished.
         private void button7_Click(object sender, EventArgs e)
         {
-            
+            Log("Stopping...");
             folderWatchTimer.Stop();
+            //Wait for the undelying thread to die
+            while (RunOverFolder.IsBusy)
+            {
+                Log("Waiting for all actions to finish");
+                System.Threading.Thread.Sleep(5000);
+            }
+            Log("Actions finished. Stopping watch");
+
+            button1.Enabled = true;
             button7.Enabled = false;
             button6.Enabled = true;
 
             Log(DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + " stopped watching folders ");
+        }
+
+        private void RunOverFolder_DoWork(object sender, DoWorkEventArgs e)
+        {
+
         }
 
     }

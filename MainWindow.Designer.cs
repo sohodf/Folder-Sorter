@@ -52,6 +52,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.StartWatch = new System.ComponentModel.BackgroundWorker();
+            this.RunOverFolder = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -303,6 +304,10 @@
             this.StartWatch.WorkerReportsProgress = true;
             this.StartWatch.WorkerSupportsCancellation = true;
             // 
+            // RunOverFolder
+            // 
+            this.RunOverFolder.DoWork += new System.ComponentModel.DoWorkEventHandler(this.RunOverFolder_DoWork);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,6 +358,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.ComponentModel.BackgroundWorker StartWatch;
+        private System.ComponentModel.BackgroundWorker RunOverFolder;
     }
 }
 
