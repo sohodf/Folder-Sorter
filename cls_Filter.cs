@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace Folder_Sorter
 {
@@ -32,9 +33,17 @@ namespace Folder_Sorter
         }
 
         //Moves the file to the targe directory
+        //return true if file has been moved successfully.
         public bool MoveFile(cls_FileToSort file)
         {
-
+            File.Copy(file.path, this.targetDir, true);
+            string targetFilePath = Path.Combine(this.targetDir, file.name);
+            if (File.Exists(targetFilePath))
+            {
+                file.path = this.targetDir;
+                return true;
+            }
+            return false;
         }
 
        
