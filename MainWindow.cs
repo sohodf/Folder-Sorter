@@ -229,9 +229,55 @@ namespace Folder_Sorter
             Log(DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + " stopped watching folders ");
         }
 
+        //checking the actual folders for new files
         private void RunOverFolder_DoWork(object sender, DoWorkEventArgs e)
         {
+            this.Invoke(new Action(() => Log("Checking started at " + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"))));
+            //iterate over the existing paths and check if the files are already in the files list. 
+            //if not, add them with the appropriate TTL according to the matching filter
+            foreach (cls_Filter path in filters)
+            {
+                string[] filePaths = Directory.GetFiles(@path.sourceDir);
+                foreach (string curretnPath in filePaths)
+                {
+                    //check if the file already exists in the files list
+                    bool exists = false;
+                    foreach (cls_FileToSort f in files)
+                    {
+                        string fullPath = Path.Combine(f.path, f.name);
+                        if (curretnPath == fullPath)
+                        {
+                            exists = true;
+                            break;
+                        }
+                        
+                    }
+                    //file does not exist in the lists - new file detected
+                    if (!exists)
+                    {
+                        this.Invoke(new Action(() => Log("New file detected at " + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"))));
+                        this.Invoke(new Action(() => Log("New file path is: " + curretnPath)));
+                        cls_FileToSort newFile = new cls_FileToSort(DateTime.Now, curretnPath, Path.GetFileName(curretnPath));
+                        //find the appropriate filter
+                        bool filterFound = false;
+                        foreach (cls_Filter filter in filters)
+                        {
+                            //filter found
+                            if (filter.CompareFileToFilter(newFile))
+                            {
+                                filterFound = true;
+                                newFile.timeToLive = filter.TTL;
+                                files.Add(newFile);
+                                break;
+                            }
+                            //filter not found - do nothing
+                            if (!filterFound)
+                                this.Invoke(new Action(() => Log("No filter found for file " + curretnPath)));
+                        }
+                    }
 
+                }
+            }
         }
 
     }

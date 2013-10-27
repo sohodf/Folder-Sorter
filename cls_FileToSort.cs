@@ -12,7 +12,7 @@ namespace Folder_Sorter
         public DateTime timeAdded { get; set; }
         public string path { get; set; }
         public string name { get; set; }
-        public int timeToLive { get; set; } //based and set upon the matching filter - in minutes
+        public long timeToLive { get; set; } //based and set upon the matching filter - in minutes
         public DateTime timeMoved { get; set; } 
         //Basic constructor for a file object. these fields are mandatory.
         public cls_FileToSort(DateTime timeAdded, string path)
@@ -21,8 +21,16 @@ namespace Folder_Sorter
             this.path = path;
             this.name = Path.GetFileName(path);
         }
+        //3 part constructor for a file object
+        public cls_FileToSort(DateTime timeAdded, string path, string name)
+        {
+            this.timeAdded = timeAdded;
+            this.path = path;
+            this.name = name;
+        }
+
         //full constructor for a file object
-        public cls_FileToSort(DateTime timeAdded, string path, string name, int timeToLive)
+        public cls_FileToSort(DateTime timeAdded, string path, string name, long timeToLive)
         {
             this.timeAdded = timeAdded;
             this.path = path;
@@ -39,6 +47,15 @@ namespace Folder_Sorter
             else
                 return true;          
         }
+
+        //checks if the file still exists in the source directory
+        public bool FileStillExists()
+        {
+            if (File.Exists(this.path + this.name))
+                return true;
+            return false;
+        }
+
 
     }
 }
