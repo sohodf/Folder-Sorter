@@ -19,8 +19,8 @@ namespace Folder_Sorter
     {
         public string watchingDir { get; set; }
         public string targetDir { get; set; }
-        public ArrayList filters = new ArrayList();
-        public ArrayList files = new ArrayList();
+        public List<cls_Filter> filters = new List<cls_Filter>();
+        public List<cls_FileToSort> files = new List<cls_FileToSort>();
         public ArrayList filesNoFilter = new ArrayList();
         //path for filters file
         public static string filterPath = Application.StartupPath + "\\FilterList.csv";
@@ -67,7 +67,7 @@ namespace Folder_Sorter
         }
 
         //read file and load filters
-        public ArrayList LoadFilters()
+        public List<cls_Filter> LoadFilters()
         {
             filters.Clear();
 
@@ -93,7 +93,7 @@ namespace Folder_Sorter
         }
 
         //read file and load active files
-        public ArrayList LoadFiles()
+        public List<cls_FileToSort> LoadFiles()
         {
             files.Clear();
 
@@ -104,13 +104,13 @@ namespace Folder_Sorter
             }
             else
             {
-                //load the filters to an object
+                //load the files to an object
                 string[] allLines = File.ReadAllLines(filesPath);
                 foreach (string line in allLines)
                 {
                     string[] items = line.Split(',');
                     cls_FileToSort file = new cls_FileToSort(DateTime.Parse(items[0]), items[1], items[2], int.Parse(items[3]));
-                    files.Add(files);
+                    files.Add(file);
                 }
                 Log(files.Count.ToString() + " files loaded in total");
                 return files;
@@ -237,6 +237,7 @@ namespace Folder_Sorter
             this.Invoke(new Action(() => Log("Checking started at " + DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss"))));
             //iterate over the existing paths and check if the files are already in the files list. 
             //if not, add them with the appropriate TTL according to the matching filter
+            bool newFileFound = false;
             foreach (cls_Filter path in filters)
             {
                 string[] filePaths = Directory.GetFiles(@path.sourceDir);
@@ -252,7 +253,6 @@ namespace Folder_Sorter
                             break;
                         }  
                     }
-
                     //check file with no filters for the file
                     foreach (cls_FileToSort f in filesNoFilter)
                     {
@@ -261,9 +261,7 @@ namespace Folder_Sorter
                             exists = true;
                             break;
                         }
-
                     }
-
                     //file does not exist in the lists - new file detected
                     if (!exists)
                     {
@@ -280,7 +278,9 @@ namespace Folder_Sorter
                                 filterFound = true;
                                 newFile.timeToLive = filter.TTL;
                                 files.Add(newFile);
-                                this.Invoke(new Action(() => Log("Filter found for file " + newFile.name + ": " + filter.filter )));
+                                this.Invoke(new Action(() => Log("Filter found for file " + newFile.name + ": " + filter.filter)));
+                                //add the new file to the csv
+                                File.AppendAllText(filesPath, newFile.timeAdded + "," + Path.GetFullPath(newFile.path) + "," + newFile.name + "," + newFile.timeToLive + Environment.NewLine);
                                 break;
                             }
                             //filter not found - do nothing
@@ -290,12 +290,12 @@ namespace Folder_Sorter
                                 this.Invoke(new Action(() => Log("No filter found for file " + curretnPath)));
                             }
                         }
+                        newFileFound = true;
                     }
-                    else
-                        this.Invoke(new Action(() => Log("No new files found")));
-
                 }
             }
+            if (!newFileFound)
+                        this.Invoke(new Action(() => Log(DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss") + ": No new files found")));
         }
 
         private string CleanString(string text)

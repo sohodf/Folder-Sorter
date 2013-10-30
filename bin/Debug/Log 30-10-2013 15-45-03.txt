@@ -1,0 +1,86 @@
+1 filters loaded in total
+1 files loaded in total
+30-10-2013 15:45:04 started watching folders - 1 filters active
+tick
+Checking started at 30-10-2013 15:45:09
+New file detected at 30-10-2013 15:45:09
+New file path is: C:\TestFolder\kaka.txt
+No filter found for file C:\TestFolder\kaka.txt
+New file detected at 30-10-2013 15:45:09
+New file path is: C:\TestFolder\nope.txt
+No filter found for file C:\TestFolder\nope.txt
+New file detected at 30-10-2013 15:45:09
+New file path is: C:\TestFolder\pipi.txt
+No filter found for file C:\TestFolder\pipi.txt
+tick
+Checking started at 30-10-2013 15:45:14
+30-10-2013 15:45:14: No new files found
+tick
+Checking started at 30-10-2013 15:45:19
+30-10-2013 15:45:19: No new files found
+tick
+Checking started at 30-10-2013 15:45:24
+30-10-2013 15:45:24: No new files found
+tick
+Checking started at 30-10-2013 15:45:29
+30-10-2013 15:45:29: No new files found
+tick
+Checking started at 30-10-2013 15:45:34
+30-10-2013 15:45:34: No new files found
+tick
+Checking started at 30-10-2013 15:45:39
+30-10-2013 15:45:39: No new files found
+tick
+Checking started at 30-10-2013 15:45:44
+30-10-2013 15:45:44: No new files found
+tick
+Checking started at 30-10-2013 15:45:49
+30-10-2013 15:45:49: No new files found
+tick
+Checking started at 30-10-2013 15:45:54
+30-10-2013 15:45:54: No new files found
+tick
+Checking started at 30-10-2013 15:45:59
+30-10-2013 15:45:59: No new files found
+tick
+Checking started at 30-10-2013 15:46:04
+30-10-2013 15:46:04: No new files found
+tick
+Checking started at 30-10-2013 15:46:09
+30-10-2013 15:46:09: No new files found
+tick
+Checking started at 30-10-2013 15:46:14
+30-10-2013 15:46:14: No new files found
+tick
+Checking started at 30-10-2013 15:46:19
+30-10-2013 15:46:19: No new files found
+tick
+Checking started at 30-10-2013 15:46:24
+30-10-2013 15:46:24: No new files found
+tick
+Checking started at 30-10-2013 15:46:29
+30-10-2013 15:46:29: No new files found
+tick
+Checking started at 30-10-2013 15:46:34
+30-10-2013 15:46:34: No new files found
+tick
+Checking started at 30-10-2013 15:46:39
+30-10-2013 15:46:39: No new files found
+tick
+Checking started at 30-10-2013 15:46:44
+30-10-2013 15:46:44: No new files found
+tick
+Checking started at 30-10-2013 15:46:49
+30-10-2013 15:46:49: No new files found
+tick
+Checking started at 30-10-2013 15:46:54
+30-10-2013 15:46:54: No new files found
+tick
+Checking started at 30-10-2013 15:46:59
+30-10-2013 15:46:59: No new files found
+tick
+Checking started at 30-10-2013 15:47:04
+30-10-2013 15:47:04: No new files found
+Stopping...
+Actions finished. Stopping watch
+30-10-2013 15:47:07 stopped watching folders 
