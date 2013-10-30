@@ -306,5 +306,11 @@ namespace Folder_Sorter
             return text;
         }
 
+        //clear the log window.
+        private void button8_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+        }
+
     }
 }
