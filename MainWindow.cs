@@ -71,12 +71,7 @@ namespace Folder_Sorter
         {
             filters.Clear();
 
-            if (File.ReadAllText(filterPath) == "")
-            {
-                //empty file - do nothing
-                return filters;
-            }
-            else
+            if (File.ReadAllText(filterPath) != "")
             {
                 //load the filters to an object
                 string[] allLines = File.ReadAllLines(filterPath);
@@ -87,9 +82,15 @@ namespace Folder_Sorter
                     filters.Add(filter);
                 }
                 Log(filters.Count.ToString() + " filters loaded in total");
-                return filters;
             }
 
+            comboBox2.Items.Clear();
+            foreach (cls_Filter filter in filters)
+            {
+                comboBox2.Items.Add(filter.filter);
+            }
+
+            return filters;
         }
 
         //read file and load active files
@@ -310,6 +311,29 @@ namespace Folder_Sorter
         private void button8_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (cls_Filter filter in filters)
+            {
+                if (filter.filter.Equals(comboBox2.SelectedItem))
+                {
+                    label15.Text = filter.sourceDir;
+                    label16.Text = filter.targetDir;
+                    label17.Text = filter.filter;
+                    label18.Text = filter.TTL.ToString();
+                }
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            label2.Text = label15.Text;
+            label5.Text = label17.Text;
+            label7.Text = label16.Text;
+            label10.Text = label18.Text;
+            tabControl1.SelectedIndex = 0;
         }
 
     }
