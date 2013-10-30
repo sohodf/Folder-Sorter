@@ -1,0 +1,12 @@
+1 filters loaded in total
+30-10-2013 14:27:09 started watching folders - 1 filters active
+tick
+Checking started at 30-10-2013 14:27:14
+tick
+tick
+tick
+New file detected at 30-10-2013 14:27:34
+New file path is: C:\TestFolder\hello.txt
+tick
+Filter found for file hello.txt: hell
+tick

@@ -21,6 +21,7 @@ namespace Folder_Sorter
         public string targetDir { get; set; }
         public ArrayList filters = new ArrayList();
         public ArrayList files = new ArrayList();
+        public ArrayList filesNoFilter = new ArrayList();
         //path for filters file
         public static string filterPath = Application.StartupPath + "\\FilterList.csv";
         //path for files file
@@ -245,14 +246,24 @@ namespace Folder_Sorter
                     bool exists = false;
                     foreach (cls_FileToSort f in files)
                     {
-                        string fullPath = Path.Combine(f.path, f.name);
-                        if (curretnPath == fullPath)
+                        if (curretnPath == f.path)
+                        {
+                            exists = true;
+                            break;
+                        }  
+                    }
+
+                    //check file with no filters for the file
+                    foreach (cls_FileToSort f in filesNoFilter)
+                    {
+                        if (curretnPath == f.path)
                         {
                             exists = true;
                             break;
                         }
-                        
+
                     }
+
                     //file does not exist in the lists - new file detected
                     if (!exists)
                     {
@@ -274,9 +285,14 @@ namespace Folder_Sorter
                             }
                             //filter not found - do nothing
                             if (!filterFound)
+                            {
+                                filesNoFilter.Add(newFile);
                                 this.Invoke(new Action(() => Log("No filter found for file " + curretnPath)));
+                            }
                         }
                     }
+                    else
+                        this.Invoke(new Action(() => Log("No new files found")));
 
                 }
             }
