@@ -1,0 +1,4 @@
+3 filters loaded in total
+30-10-2013 12:22:02 started watching folders - 3 filters active
+tick
+Checking started at 30-10-2013 12:22:07

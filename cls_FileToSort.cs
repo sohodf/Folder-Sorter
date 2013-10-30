@@ -7,7 +7,7 @@ using System.IO;
 //
 namespace Folder_Sorter
 {
-    class cls_FileToSort
+    public class cls_FileToSort
     {
         public DateTime timeAdded { get; set; }
         public string path { get; set; }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 
 namespace Folder_Sorter
@@ -81,7 +82,7 @@ namespace Folder_Sorter
                 foreach (string line in allLines)
                 {
                     string[] items = line.Split(',');
-                    cls_Filter filter = new cls_Filter(items[0], items[1], items[2], int.Parse(items[3]));
+                    cls_Filter filter = new cls_Filter(@items[0], @items[1], items[2], int.Parse(items[3]));
                     filters.Add(filter);
                 }
                 Log(filters.Count.ToString() + " filters loaded in total");
@@ -125,7 +126,7 @@ namespace Folder_Sorter
             if (result == DialogResult.OK)
             {
                 label2.Text = fbd.SelectedPath;
-                watchingDir = (char)34 + fbd.SelectedPath + (char)34;
+                watchingDir = fbd.SelectedPath;
 
             }
        }
@@ -142,7 +143,7 @@ namespace Folder_Sorter
             if (result == DialogResult.OK)
             {
                 label7.Text = fbd.SelectedPath;
-                targetDir = (char)34 + fbd.SelectedPath + (char)34;
+                targetDir = fbd.SelectedPath;
 
             }
         }
@@ -162,7 +163,7 @@ namespace Folder_Sorter
             }
             else
             {
-                File.AppendAllText(filterPath, watchingDir + "," + targetDir + "," + label5.Text + "," + comboBox1.Text + Environment.NewLine);
+                File.AppendAllText(filterPath, Path.GetFullPath(watchingDir) + "," + Path.GetFullPath(targetDir) + "," + label5.Text + "," + comboBox1.Text + Environment.NewLine);
                 LoadFilters();
                 Log("1 filter added");
                 
@@ -268,6 +269,7 @@ namespace Folder_Sorter
                                 filterFound = true;
                                 newFile.timeToLive = filter.TTL;
                                 files.Add(newFile);
+                                this.Invoke(new Action(() => Log("Filter found for file " + newFile.name + ": " + filter.filter )));
                                 break;
                             }
                             //filter not found - do nothing
@@ -278,6 +280,14 @@ namespace Folder_Sorter
 
                 }
             }
+        }
+
+        private string CleanString(string text)
+        {
+            string regexSearch = new string(Path.GetInvalidFileNameChars()) + new string(Path.GetInvalidPathChars());
+            Regex r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
+            text = r.Replace(text, "");
+            return text;
         }
 
     }

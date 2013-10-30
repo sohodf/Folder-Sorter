@@ -27,7 +27,7 @@ namespace Folder_Sorter
         //checks if the file fits the current filter. return true if it fits.
         public bool CompareFileToFilter(cls_FileToSort file)
         {
-            if (Regex.IsMatch(filter, file.name))
+            if (Regex.IsMatch(file.name, this.filter))
                 return true;
             return false;
         }

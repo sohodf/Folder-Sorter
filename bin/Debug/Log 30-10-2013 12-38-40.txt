@@ -1,0 +1,88 @@
+1 filters loaded in total
+30-10-2013 12:38:42 started watching folders - 1 filters active
+tick
+Checking started at 30-10-2013 12:38:47
+New file detected at 30-10-2013 12:38:47
+New file path is: C:\TestFolder\hello.txt
+tick
+New file detected at 30-10-2013 12:38:55
+New file path is: C:\TestFolder\nope.txt
+tick
+No filter found for file C:\TestFolder\nope.txt
+tick
+Checking started at 30-10-2013 12:39:02
+New file detected at 30-10-2013 12:39:02
+New file path is: C:\TestFolder\hello.txt
+New file detected at 30-10-2013 12:39:06
+New file path is: C:\TestFolder\nope.txt
+No filter found for file C:\TestFolder\nope.txt
+tick
+Checking started at 30-10-2013 12:39:07
+New file detected at 30-10-2013 12:39:07
+New file path is: C:\TestFolder\hello.txt
+New file detected at 30-10-2013 12:39:07
+New file path is: C:\TestFolder\nope.txt
+No filter found for file C:\TestFolder\nope.txt
+tick
+Checking started at 30-10-2013 12:39:12
+New file detected at 30-10-2013 12:39:12
+New file path is: C:\TestFolder\hello.txt
+New file detected at 30-10-2013 12:39:12
+New file path is: C:\TestFolder\nope.txt
+No filter found for file C:\TestFolder\nope.txt
+tick
+Checking started at 30-10-2013 12:39:17
+New file detected at 30-10-2013 12:39:17
+New file path is: C:\TestFolder\hello.txt
+New file detected at 30-10-2013 12:39:17
+New file path is: C:\TestFolder\nope.txt
+No filter found for file C:\TestFolder\nope.txt
+tick
+Checking started at 30-10-2013 12:39:22
+New file detected at 30-10-2013 12:39:22
+New file path is: C:\TestFolder\hello.txt
+New file detected at 30-10-2013 12:39:22
+New file path is: C:\TestFolder\nope.txt
+No filter found for file C:\TestFolder\nope.txt
+tick
+Checking started at 30-10-2013 12:39:27
+New file detected at 30-10-2013 12:39:27
+New file path is: C:\TestFolder\hello.txt
+New file detected at 30-10-2013 12:39:27
+New file path is: C:\TestFolder\nope.txt
+No filter found for file C:\TestFolder\nope.txt
+tick
+Checking started at 30-10-2013 12:39:32
+New file detected at 30-10-2013 12:39:32
+New file path is: C:\TestFolder\hello.txt
+New file detected at 30-10-2013 12:39:32
+New file path is: C:\TestFolder\nope.txt
+No filter found for file C:\TestFolder\nope.txt
+tick
+Checking started at 30-10-2013 12:39:37
+New file detected at 30-10-2013 12:39:37
+New file path is: C:\TestFolder\hello.txt
+New file detected at 30-10-2013 12:39:37
+New file path is: C:\TestFolder\nope.txt
+No filter found for file C:\TestFolder\nope.txt
+tick
+Checking started at 30-10-2013 12:39:42
+New file detected at 30-10-2013 12:39:42
+New file path is: C:\TestFolder\hello.txt
+New file detected at 30-10-2013 12:39:42
+New file path is: C:\TestFolder\nope.txt
+No filter found for file C:\TestFolder\nope.txt
+tick
+Checking started at 30-10-2013 12:39:47
+New file detected at 30-10-2013 12:39:47
+New file path is: C:\TestFolder\hello.txt
+New file detected at 30-10-2013 12:39:47
+New file path is: C:\TestFolder\nope.txt
+No filter found for file C:\TestFolder\nope.txt
+tick
+Checking started at 30-10-2013 12:39:52
+New file detected at 30-10-2013 12:39:52
+New file path is: C:\TestFolder\hello.txt
+New file detected at 30-10-2013 12:39:52
+New file path is: C:\TestFolder\nope.txt
+No filter found for file C:\TestFolder\nope.txt
