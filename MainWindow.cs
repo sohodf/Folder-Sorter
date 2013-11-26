@@ -71,7 +71,7 @@ namespace Folder_Sorter
         {
             filters.Clear();
 
-            if (File.ReadAllText(filterPath) != "")
+            if (File.Exists(filterPath))
             {
                 //load the filters to an object
                 string[] allLines = File.ReadAllLines(filterPath);
@@ -165,7 +165,7 @@ namespace Folder_Sorter
             }
             else
             {
-                File.AppendAllText(filterPath, Path.GetFullPath(watchingDir) + "," + Path.GetFullPath(targetDir) + "," + label5.Text + "," + comboBox1.Text + Environment.NewLine);
+                File.AppendAllText(filterPath, Path.GetFullPath(watchingDir) + "," + Path.GetFullPath(targetDir) + "," + label5.Text + "," + label10.Text + Environment.NewLine);
                 LoadFilters();
                 Log("1 filter added");
                 
@@ -333,7 +333,37 @@ namespace Folder_Sorter
             label5.Text = label17.Text;
             label7.Text = label16.Text;
             label10.Text = label18.Text;
+            textBox1.Text = comboBox2.GetItemText(comboBox2.SelectedItem);
             tabControl1.SelectedIndex = 0;
+            watchingDir = label15.Text;
+            targetDir = label16.Text;
+            
+
+        }
+
+        //writes all filters to a file and loads them
+        public void WriteFilters()
+        {
+            File.Delete(filterPath);
+            foreach (cls_Filter filter in filters)
+            {
+                File.AppendAllText(filterPath, filter.sourceDir + "," + filter.targetDir + "," + filter.filter + "," + filter.TTL + "," + comboBox1.Text + Environment.NewLine);
+            }
+            LoadFilters();  
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            foreach (cls_Filter filterToRemvoe in filters)
+            {
+                if (filterToRemvoe.filter == comboBox2.GetItemText(comboBox2.SelectedItem))
+                {
+                    filters.Remove(filterToRemvoe);
+                    break;
+                }
+            }
+            comboBox2.SelectedIndex = 0;
+            WriteFilters();
         }
 
     }

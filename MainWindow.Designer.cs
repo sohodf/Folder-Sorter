@@ -493,6 +493,7 @@
             this.button9.Text = "Remove Filter";
             this.toolTipObject.SetToolTip(this.button9, "Removes the filter from the system");
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
